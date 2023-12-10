@@ -1,0 +1,44 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+#board {
+    /* background-color: skyblue; */
+    background-image: url("./flappybirdbg.png");
+}
+
+#game-info {
+    margin-bottom: 20px;
+
+}
+
+#start-button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#game-container {
+    display: flex;
+    max-width: 10%;
+    max-height: 10%;
+    justify-content: space-between;
+}
+
+#contributions {
+    justify-content: center;
+    text-align: center;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+#contributions img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+img {
+    max-width: 20%;
+    max-height: 20%;
+}
