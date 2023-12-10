@@ -152,7 +152,7 @@ function placePipes() {
 }
 
 function moveBird(e) {
-    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
+    if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyX") {
         //jump
         velocityY = -6;
 
@@ -165,6 +165,25 @@ function moveBird(e) {
         }
     }
 }
+
+function touchHandler() {
+    //jump
+    velocityY = -6;
+
+    //reset game
+    if (gameOver) {
+        bird.y = birdY;
+        pipeArray = [];
+        score = 0;
+        gameOver = false;
+    }
+}
+
+document.addEventListener('keydown', moveBird);
+
+// Adiciona um ouvinte de evento de toque
+document.addEventListener('touchstart', touchHandler);
+
 
 function detectCollision(a, b) {
     return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
