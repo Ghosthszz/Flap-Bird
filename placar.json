@@ -1,4 +1,5 @@
 [
-    {"name": "Jogador1", "score": 3},
-    {"name": "Jogador2", "score": 5}
+    { "score": 3 },
+    { "score": 2 },
+    { "score": 1 }
 ]
