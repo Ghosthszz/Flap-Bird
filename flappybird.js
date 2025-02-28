@@ -1,3 +1,5 @@
+let ATXSF = false;
+
 let addscore;
 
 // Função para iniciar o jogo
@@ -82,7 +84,6 @@ function update() {
 
     //bird
     velocityY += gravity;
-    // bird.y += velocityY;
     bird.y = Math.max(bird.y + velocityY, 0); //apply gravity to current bird.y, limit the bird.y to top of the canvas
     context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
 
@@ -101,7 +102,8 @@ function update() {
             pipe.passed = true;
         }
 
-        if (detectCollision(bird, pipe)) {
+        // Se ATXSF for true, não detecta colisões
+        if (!ATXSF && detectCollision(bird, pipe)) {
             gameOver = true;
         }
     }
@@ -126,9 +128,6 @@ function placePipes() {
         return;
     }
 
-    //(0-1) * pipeHeight/2.
-    // 0 -> -128 (pipeHeight/4)
-    // 1 -> -128 - 256 (pipeHeight/4 - pipeHeight/2) = -3/4 pipeHeight
     let randomPipeY = pipeY - pipeHeight/4 - Math.random()*(pipeHeight/2);
     let openingSpace = board.height/4;
 
