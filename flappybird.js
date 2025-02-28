@@ -1,8 +1,10 @@
+let addscore;
+
+// Função para iniciar o jogo
 function startGame() {
     document.getElementById("game-info").style.display = "none"; // Esconde o texto e botão de início
     document.getElementById("game-container").style.display = "flex"; // Exibe o contêiner do jogo
     document.getElementById("contributions").style.display = "block"; // Exibe a seção de contribuições
-
 }
 
 //board
@@ -41,7 +43,7 @@ let velocityY = 0; //bird jump speed
 let gravity = 0.4;
 
 let gameOver = false;
-let score = 0;
+let score = addscore || 0; // Inicializa o score com o valor de addscore, caso tenha sido definido
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -160,7 +162,7 @@ function moveBird(e) {
         if (gameOver) {
             bird.y = birdY;
             pipeArray = [];
-            score = 0;
+            score = addscore || 0; // Reinicia o score com o valor de addscore, se definido
             gameOver = false;
         }
     }
@@ -177,7 +179,7 @@ function touchHandler(e) {
     if (gameOver) {
         bird.y = birdY;
         pipeArray = [];
-        score = 0;
+        score = addscore || 0; // Reinicia o score com o valor de addscore, se definido
         gameOver = false;
     }
 }
@@ -186,25 +188,6 @@ document.addEventListener('keydown', moveBird);
 
 // Adiciona um ouvinte de evento de toque
 document.addEventListener('touchstart', touchHandler);
-
-function touchHandler() {
-    //jump
-    velocityY = -6;
-
-    //reset game
-    if (gameOver) {
-        bird.y = birdY;
-        pipeArray = [];
-        score = 0;
-        gameOver = false;
-    }
-}
-
-document.addEventListener('keydown', moveBird);
-
-// Adiciona um ouvinte de evento de toque
-document.addEventListener('touchstart', touchHandler);
-
 
 function detectCollision(a, b) {
     return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
