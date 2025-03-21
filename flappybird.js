@@ -40,9 +40,10 @@ let topPipeImg;
 let bottomPipeImg;
 
 //physics
-let velocityX = -2; //pipes moving left speed
+let velocityX = -2; // Velocidade inicial dos canos (normal)
 let velocityY = 0; //bird jump speed
 let gravity = 0.4;
+let VEL = 1; // Define a velocidade dos canos: 1 = normal, 2 = mais rápido, 3 = extremamente rápido
 
 let gameOver = false;
 let score = addscore || 0; // Inicializa o score com o valor de addscore, caso tenha sido definido
@@ -94,11 +95,11 @@ function update() {
     //pipes
     for (let i = 0; i < pipeArray.length; i++) {
         let pipe = pipeArray[i];
-        pipe.x += velocityX;
+        pipe.x += velocityX * VEL; // Os canos se movem de acordo com a velocidade configurada por VEL
         context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
 
         if (!pipe.passed && bird.x > pipe.x + pipe.width) {
-            score += 0.5; //0.5 because there are 2 pipes! so 0.5*2 = 1, 1 for each set of pipes
+            score += 0.5; //0.5 porque há 2 canos! então 0.5*2 = 1, 1 para cada conjunto de canos
             pipe.passed = true;
         }
 
