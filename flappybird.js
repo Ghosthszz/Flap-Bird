@@ -43,7 +43,7 @@ let bottomPipeImg;
 let velocityX = -2; // Velocidade inicial dos canos (normal)
 let velocityY = 0; //bird jump speed
 let gravity = 0.4;
-let VEL = 1; // Define a velocidade dos canos: 1 = normal, 2 = mais rápido, 3 = extremamente rápido
+let VEL = 2; // Define a velocidade dos canos: 1 = normal, 2 = mais rápido, 3 = extremamente rápido
 
 let gameOver = false;
 let score = addscore || 0; // Inicializa o score com o valor de addscore, caso tenha sido definido
