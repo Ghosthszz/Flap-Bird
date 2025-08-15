@@ -1,1 +1,7 @@
-[{"name":"Jogador 1","score":150},{"name":"Jogador 2","score":120},{"name":"BLKK","score":12}]
+{
+    "ranking": [
+        { "posicao": 1, "nome": "BLK", "pontuacao": 5 },
+        { "posicao": 2, "nome": "Player2", "pontuacao": 2 },
+        { "posicao": 3, "nome": "Player3", "pontuacao": 1 }
+    ]
+}
