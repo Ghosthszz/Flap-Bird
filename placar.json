@@ -7,13 +7,13 @@
         },
         {
             "posicao": 2,
-            "nome": "Flap",
-            "pontuacao": 6
+            "nome": null,
+            "pontuacao": 9
         },
         {
             "posicao": 3,
-            "nome": "BLK",
-            "pontuacao": 5
+            "nome": "Flap",
+            "pontuacao": 6
         }
     ]
 }
