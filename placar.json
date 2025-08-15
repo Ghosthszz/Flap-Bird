@@ -7,13 +7,13 @@
         },
         {
             "posicao": 2,
-            "nome": "segundo",
-            "pontuacao": 4
+            "nome": "terceiro",
+            "pontuacao": 5
         },
         {
             "posicao": 3,
-            "nome": "terceiro",
-            "pontuacao": 2
+            "nome": "segundo",
+            "pontuacao": 4
         }
     ]
 }
