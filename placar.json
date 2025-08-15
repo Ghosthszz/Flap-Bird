@@ -8,12 +8,12 @@
         {
             "posicao": 2,
             "nome": "segundo",
-            "pontuacao": 5
+            "pontuacao": 4
         },
         {
             "posicao": 3,
-            "nome": "Thiagop",
-            "pontuacao": 3
+            "nome": "terceiro",
+            "pontuacao": 2
         }
     ]
 }
