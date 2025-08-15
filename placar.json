@@ -1,7 +1,19 @@
 {
     "ranking": [
-        { "posicao": 1, "nome": "BLK", "pontuacao": 5 },
-        { "posicao": 2, "nome": "Player2", "pontuacao": 2 },
-        { "posicao": 3, "nome": "Player3", "pontuacao": 1 }
+        {
+            "posicao": 1,
+            "nome": "BLK",
+            "pontuacao": 5
+        },
+        {
+            "posicao": 2,
+            "nome": "Player2",
+            "pontuacao": 2
+        },
+        {
+            "posicao": 3,
+            "nome": "Teste3°",
+            "pontuacao": 2
+        }
     ]
 }
