@@ -3,17 +3,17 @@
         {
             "posicao": 1,
             "nome": "blk",
-            "pontuacao": 15
+            "pontuacao": 5
         },
         {
             "posicao": 2,
             "nome": "Thiagop",
-            "pontuacao": 11
+            "pontuacao": 3
         },
         {
             "posicao": 3,
-            "nome": "blk",
-            "pontuacao": 11
+            "nome": "teste3",
+            "pontuacao": 1
         }
     ]
 }
