@@ -7,13 +7,13 @@
         },
         {
             "posicao": 2,
-            "nome": null,
-            "pontuacao": 9
+            "nome": "Leonardo",
+            "pontuacao": 3
         },
         {
             "posicao": 3,
-            "nome": "TT",
-            "pontuacao": 9
+            "nome": "Thiago",
+            "pontuacao": 1
         }
     ]
 }
