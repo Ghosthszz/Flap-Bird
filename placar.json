@@ -2,18 +2,18 @@
     "ranking": [
         {
             "posicao": 1,
+            "nome": "Gustavo",
+            "pontuacao": 10
+        },
+        {
+            "posicao": 2,
             "nome": "BLK",
             "pontuacao": 5
         },
         {
-            "posicao": 2,
+            "posicao": 3,
             "nome": "NL",
             "pontuacao": 5
-        },
-        {
-            "posicao": 3,
-            "nome": "Gu",
-            "pontuacao": 3
         }
     ]
 }
