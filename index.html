@@ -1,25 +1,59 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Flappy Bird</title>
-        <link rel="stylesheet" href="flappybird.css">
-        <script src="flappybird.js"></script>
-    </head>
-    <body>
-        <div id="game-info">
-            <p>Jogo criado por Ghosthszz_</p>
-            <button id="start-button" onclick="startGame()">Iniciar Jogo</button>
-        </div>
-        <div id="game-container" style="display: none;">
-            <canvas id="board"></canvas>
-            <div id="contributions" style="display: none;">
-                <p>Contribua por aqui:</p>
-                <img id="tre" src="Untitled.png" alt="Descrição da Imagem">
-                <a href="https://livepix.gg/ghosthszz" target="_blank">Clique Aqui!</a>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flappy Bird</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="flappybird.css">
+<style>
+#scoreboard {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+    font-family: 'Press Start 2P', sans-serif;
+}
 
-            </div>
-        </div>
-    </body>
+.score-item, #timer {
+    padding: 4px 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+</style>
+</head>
+<body>
+
+<div id="scoreboard">
+    <div class="score-item">🥇 1º: 0</div>
+    <div class="score-item">🥈 2º: 0</div>
+    <div class="score-item">🥉 3º: 0</div>
+    <div id="timer">Próxima atualização: 120s</div>
+</div>
+
+<div id="game-info">
+    <p>Jogo criado por Ghosthszz_</p>
+    <button id="start-button" onclick="startGame()">Iniciar Jogo</button>
+</div>
+
+<div id="game-container">
+    <canvas id="board"></canvas>
+    <div id="contributions">
+        <p>Contribua por aqui:</p>
+        <img id="tre" src="Untitled.png" alt="Descrição da Imagem">
+        <a href="https://livepix.gg/ghosthszz" target="_blank">Clique Aqui!</a>
+    </div>
+</div>
+
+<script src="flappybird.js"></script>
+</body>
 </html>
