@@ -7,13 +7,13 @@
         },
         {
             "posicao": 2,
-            "nome": "Leonardo",
-            "pontuacao": 301
+            "nome": "gui",
+            "pontuacao": 401
         },
         {
             "posicao": 3,
-            "nome": null,
-            "pontuacao": 300
+            "nome": "Leonardo",
+            "pontuacao": 301
         }
     ]
 }
