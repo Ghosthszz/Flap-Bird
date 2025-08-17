@@ -7,13 +7,13 @@
         },
         {
             "posicao": 2,
-            "nome": "BLK",
-            "pontuacao": 403
+            "nome": "gui",
+            "pontuacao": 650
         },
         {
             "posicao": 3,
-            "nome": "gui",
-            "pontuacao": 401
+            "nome": "BLK",
+            "pontuacao": 403
         }
     ]
 }
