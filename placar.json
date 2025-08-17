@@ -2,18 +2,18 @@
     "ranking": [
         {
             "posicao": 1,
+            "nome": "NO CODE",
+            "pontuacao": 139
+        },
+        {
+            "posicao": 2,
             "nome": "BLK",
             "pontuacao": 105
         },
         {
-            "posicao": 2,
+            "posicao": 3,
             "nome": "gui",
             "pontuacao": 57
-        },
-        {
-            "posicao": 3,
-            "nome": "dg",
-            "pontuacao": 34
         }
     ]
 }
