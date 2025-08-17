@@ -2,18 +2,18 @@
     "ranking": [
         {
             "posicao": 1,
+            "nome": "CASSIA",
+            "pontuacao": 602
+        },
+        {
+            "posicao": 2,
             "nome": "BLK",
             "pontuacao": 403
         },
         {
-            "posicao": 2,
+            "posicao": 3,
             "nome": "gui",
             "pontuacao": 401
-        },
-        {
-            "posicao": 3,
-            "nome": "Leonardo",
-            "pontuacao": 301
         }
     ]
 }
