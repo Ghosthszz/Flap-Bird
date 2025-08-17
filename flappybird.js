@@ -256,6 +256,20 @@ function atualizarPlacar(ranking) {
     timerDiv.style.background = "rgba(255,255,255,0.1)";
     timerDiv.style.borderRadius = "6px";
     scoreboard.appendChild(timerDiv);
+
+    // 🔗 Adiciona o link do multiplayer
+    const link = document.createElement("a");
+    link.href = "https://flap-bird-multiplayer.onrender.com/";
+    link.target = "_blank";
+    link.textContent = "Teste o multiplayer (beta)";
+    link.style.fontSize = "1em";
+    link.style.margin = "0";
+    link.style.textDecoration = "none";
+    link.style.color = "white";
+    link.style.padding = "4px 6px";
+    link.style.background = "#161616";
+    link.style.borderRadius = "6px";
+    scoreboard.appendChild(link);
 }
 
 // ========================
@@ -364,3 +378,4 @@ function detectCollision(a, b) {
         a.y + a.height > b.y
     );
 }
+
