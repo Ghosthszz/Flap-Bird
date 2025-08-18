@@ -257,8 +257,6 @@ function atualizarPlacar(ranking) {
         div.textContent = `${medalha} ${item.nome}: ${item.pontuacao}`;
         scoreboard.appendChild(div);
     });
-}
-
     // Adiciona o timer de atualização
     const timerDiv = document.createElement("div");
     timerDiv.id = "timer";
@@ -389,5 +387,6 @@ function detectCollision(a, b) {
         a.y + a.height > b.y
     );
 }
+
 
 
