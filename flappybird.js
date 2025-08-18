@@ -110,7 +110,7 @@ function update() {
 
 function mostrarGameOver() {
     context.fillStyle = "white";
-    context.font = "45px sans-serif";
+    context.font = "30px 'Press Start 2P', sans-serif";
     context.fillText("GAME OVER", 5, 90);
 }
 
@@ -140,7 +140,7 @@ function atualizarPipes() {
 
 function mostrarPontuacao() {
     context.fillStyle = "white";
-    context.font = "45px sans-serif";
+    context.font = "Press Start 2P', sans-serif";
     context.fillText(Math.floor(score), 5, 45);
 }
 
