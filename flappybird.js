@@ -282,21 +282,21 @@ function atualizarPlacar(ranking) {
 }
 
 // ========================
-// Verifica Top3 e atualiza
+// Verifica RANKING e atualiza
 // ========================
 async function verificarPontuacao(novaPontuacao) {
     let { placar, sha } = await carregarPlacar();
 
-    // Verifica se a pontuação entra no Top3
+    // Verifica se a pontuação entra no RANKING
     let posicaoAtualizada = -1;
     if (novaPontuacao > placar[0].pontuacao) posicaoAtualizada = 0;
     else if (novaPontuacao > placar[1].pontuacao) posicaoAtualizada = 1;
     else if (novaPontuacao > placar[2].pontuacao) posicaoAtualizada = 2;
 
-    if (posicaoAtualizada === -1) return; // Não entrou no Top3, não pede nome
+    if (posicaoAtualizada === -1) return; 
 
     // Pergunta o nome apenas se for atualizar o placar
-    let nome = prompt("Parabéns! Você entrou no Top 3! Digite seu nome:");
+    let nome = prompt("Parabéns! Você entrou no RANKING! Digite seu nome:");
 
     // Verifica se o nome já existe no ranking
     let jogadorExistente = placar.find(p => p.nome === nome);
@@ -372,7 +372,7 @@ function updateTimer(){
 
 async function autoUpdateScore(currentScore){
     const { placar, sha } = await carregarPlacar();
-    await salvarPlacar(placar, sha); // Atualiza sem Top3
+    await salvarPlacar(placar, sha);
     updateTimer();
 }
 
@@ -387,6 +387,7 @@ function detectCollision(a, b) {
         a.y + a.height > b.y
     );
 }
+
 
 
 
