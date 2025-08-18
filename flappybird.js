@@ -240,6 +240,16 @@ async function carregarPlacar() {
 function atualizarPlacar(ranking) {
     const scoreboard = document.getElementById("scoreboard");
     scoreboard.innerHTML = "";
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = "RANKING:";
+    titulo.style.margin = "0 0 10px 0";
+    titulo.style.fontFamily = "'Press Start 2P', sans-serif";
+    titulo.style.fontSize = "14px";
+    titulo.style.color = "white";
+    scoreboard.appendChild(titulo);
+
+    // Renderiza os jogadores
     ranking.forEach(item => {
         const medalha = item.posicao === 1 ? "🥇" : item.posicao === 2 ? "🥈" : "🥉";
         const div = document.createElement("div");
@@ -247,6 +257,7 @@ function atualizarPlacar(ranking) {
         div.textContent = `${medalha} ${item.nome}: ${item.pontuacao}`;
         scoreboard.appendChild(div);
     });
+}
 
     // Adiciona o timer de atualização
     const timerDiv = document.createElement("div");
@@ -378,4 +389,5 @@ function detectCollision(a, b) {
         a.y + a.height > b.y
     );
 }
+
 
