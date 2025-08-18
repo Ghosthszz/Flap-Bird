@@ -2,18 +2,18 @@
     "ranking": [
         {
             "posicao": 1,
+            "nome": null,
+            "pontuacao": 247
+        },
+        {
+            "posicao": 2,
             "nome": "NO CODE",
             "pontuacao": 246
         },
         {
-            "posicao": 2,
+            "posicao": 3,
             "nome": "NATHAN_ALMEIDA",
             "pontuacao": 221
-        },
-        {
-            "posicao": 3,
-            "nome": "DG",
-            "pontuacao": 220
         }
     ]
 }
