@@ -29,7 +29,7 @@ let pipeArray = [];
 let velocityX = -2;
 let velocityY = 0;
 const gravity = 0.4;
-const VEL = 2;
+let VEL = 2;
 
 // Estado do jogo
 let gameOver = false;
@@ -387,6 +387,7 @@ function detectCollision(a, b) {
         a.y + a.height > b.y
     );
 }
+
 
 
 
