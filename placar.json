@@ -2,18 +2,18 @@
     "ranking": [
         {
             "posicao": 1,
+            "nome": null,
+            "pontuacao": 432
+        },
+        {
+            "posicao": 2,
             "nome": "NO CODE",
             "pontuacao": 311
         },
         {
-            "posicao": 2,
+            "posicao": 3,
             "nome": "LIVI_011",
             "pontuacao": 253
-        },
-        {
-            "posicao": 3,
-            "nome": "TIDREXX",
-            "pontuacao": 227
         }
     ]
 }
