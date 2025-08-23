@@ -4,6 +4,7 @@
 let ATXSF = false;
 let addscore;
 let scoreMultiplier = 1;
+let movingPipes = false;
 let topScores = [0, 0, 0];
 
 let board, context;
@@ -65,13 +66,57 @@ function configurarCanvas() {
     board.width = boardWidth;
     context = board.getContext("2d");
 }
-function carregarImagens() {
-    birdImg = carregarImagem("./flappybird.png", () => {
-        context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
-    });
-    topPipeImg = carregarImagem("./toppipe.png");
-    bottomPipeImg = carregarImagem("./bottompipe.png");
-}
+  // Sempre inicia com o pássaro padrão
+  function carregarImagens() {
+      birdImg = carregarImagem("./flappybird.png", () => {
+          context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
+      });
+
+      topPipeImg = carregarImagem("./toppipe.png");
+      bottomPipeImg = carregarImagem("./bottompipe.png");
+  }
+
+  // Troca via link
+  function saveBirdIcon() {
+      const url = document.getElementById("bird-url").value.trim();
+      if (url && url.endsWith(".png")) {
+          birdImg = carregarImagem(url, () => {
+              context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
+          });
+          document.getElementById("bird-img").src = url;
+      } else {
+          alert("Por favor, insira um link válido de imagem .png");
+      }
+  }
+
+  // Troca via upload
+  function uploadBirdIcon() {
+      const fileInput = document.getElementById("bird-file");
+      const file = fileInput.files[0];
+      if (file && file.type === "image/png") {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+              const url = e.target.result;
+              birdImg = carregarImagem(url, () => {
+                  context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
+              });
+              document.getElementById("bird-img").src = url;
+          };
+          reader.readAsDataURL(file);
+      } else {
+          alert("Selecione um arquivo PNG válido.");
+      }
+  }
+
+  // Resetar para imagem padrão
+  function resetBirdIcon() {
+      birdImg = carregarImagem("./flappybird.png", () => {
+          context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
+      });
+      document.getElementById("bird-img").src = "flappybird.png";
+      document.getElementById("bird-url").value = "";
+      document.getElementById("bird-file").value = "";
+  }
 function carregarImagem(src, onload) {
     const img = new Image();
     img.src = src;
@@ -99,16 +144,22 @@ function setLevel(selected) {
         VEL = 2; 
         ATXSF = false; 
         allowRanking = true;
+        birdImg = carregarImagem("./flappybird.png", () => {});
+        movingPipes = false;
     }
     if (level === "medium") {
         VEL = 5.5; 
         ATXSF = false; 
         allowRanking = true;
+        birdImg = carregarImagem("./flappybird.png", () => {});
+        movingPipes = false;
     }
     if (level === "hard") {
-        VEL = 9.5; 
+        VEL = 6.5; 
         ATXSF = false; 
         allowRanking = true;
+        birdImg = carregarImagem("./flappybird.png", () => {});
+        movingPipes = true;
     }
 
     // Elementos custom
@@ -132,16 +183,28 @@ function applyCustom() {
     VEL = parseFloat(document.getElementById("custom-speed").value) || 2;
     ATXSF = document.getElementById("custom-nocollision").checked;
     
-    // Novo: pegar pontuação inicial e multiplicador
     const startScore = parseInt(document.getElementById("custom-start-score").value) || 0;
     addscore = startScore;
-    score = addscore; // Atualiza a pontuação atual
+    score = addscore;
 
     scoreMultiplier = parseInt(document.getElementById("custom-score-multiplier").value) || 1;
 
+    // Movimento vertical dos canos
+    const movingPipesCheckbox = document.getElementById("custom-moving-pipes");
+    movingPipes = movingPipesCheckbox.checked; // variável global
+
+    // Montar mensagem do alert
+    let msg = `⚠️ Configurações personalizadas aplicadas!\nPontos iniciais: ${addscore}, Multiplicador: ${scoreMultiplier}x`;
+
+    // Adicionar observação se canos móveis estiver ativo
+    if (movingPipes) {
+        msg += "\nOBS: Velocidade recomendada para a função dos canos: 4 ou 4.5";
+    }
+
     allowRanking = false;
-    alert("⚠️ Configurações personalizadas aplicadas! Ranking desativado.\nPontos iniciais: " + addscore + ", Multiplicador: " + scoreMultiplier + "x");
+    alert(msg);
 }
+
 
 
 function startGame() {
@@ -176,18 +239,39 @@ function atualizarBird() {
 
 function atualizarPipes() {
     for (let pipe of pipeArray) {
+        // Movimento horizontal
         pipe.x += velocityX * VEL;
+
+        // Movimento vertical dos pipes no modo hard ou customizado
+        if (level === "hard" || movingPipes) {
+            pipe.y += pipe.speed * pipe.direction;
+
+            // Limites de oscilação para não sair do canvas
+            const minY = -pipeHeight / 2;
+            const maxY = boardHeight - pipe.height / 2;
+
+            if (pipe.y < minY || pipe.y > maxY) {
+                pipe.direction *= -1; // inverte direção ao atingir limite
+            }
+        }
+
+        // Desenhar o pipe
         context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
 
+        // Atualizar pontuação
         if (!pipe.passed && bird.x > pipe.x + pipe.width) {
             score += 0.5 * scoreMultiplier;
             pipe.passed = true;
         }
 
+        // Detectar colisão
         if (!ATXSF && detectCollision(bird, pipe)) endGame();
     }
+
+    // Remover pipes que saíram da tela
     pipeArray = pipeArray.filter(pipe => pipe.x >= -pipeWidth);
 }
+
 
 function mostrarPontuacao() {
     context.fillStyle = "white";
@@ -197,12 +281,40 @@ function mostrarPontuacao() {
 
 function placePipes() {
     if (gameOver) return;
+
+    // Posição vertical aleatória do cano superior
     let randomPipeY = pipeY - pipeHeight / 4 - Math.random() * (pipeHeight / 2);
     let openingSpace = board.height / 4;
 
-    pipeArray.push({ img: topPipeImg, x: pipeX, y: randomPipeY, width: pipeWidth, height: pipeHeight, passed: false });
-    pipeArray.push({ img: bottomPipeImg, x: pipeX, y: randomPipeY + pipeHeight + openingSpace, width: pipeWidth, height: pipeHeight, passed: false });
+    // Velocidade de oscilação
+    let pipeSpeed = 1; 
+
+    // Top pipe
+    pipeArray.push({ 
+        img: topPipeImg, 
+        x: pipeX, 
+        y: randomPipeY, 
+        width: pipeWidth, 
+        height: pipeHeight, 
+        passed: false,
+        speed: (level === "hard" || movingPipes) ? pipeSpeed : 0, // só se mover se hard ou customizado
+        direction: 1
+    });
+
+    // Bottom pipe
+    pipeArray.push({ 
+        img: bottomPipeImg, 
+        x: pipeX, 
+        y: randomPipeY + pipeHeight + openingSpace, 
+        width: pipeWidth, 
+        height: pipeHeight, 
+        passed: false,
+        speed: (level === "hard" || movingPipes) ? pipeSpeed : 0,
+        direction: -1
+    });
 }
+
+
 
 function moveBird(e) {
     if (["Space", "ArrowUp", "KeyX"].includes(e.code)) {
