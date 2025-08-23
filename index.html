@@ -33,47 +33,77 @@
 </head>
 <body>
 <div id="scoreboard">
-    <div class="score-item">🥇 1º: 0</div>
-    <div class="score-item">🥈 2º: 0</div>
-    <div class="score-item">🥉 3º: 0</div>
-    <div id="timer">Próxima atualização: 120s</div>
+  <div class="score-item">🥇 1º: 0</div>
+  <div class="score-item">🥈 2º: 0</div>
+  <div class="score-item">🥉 3º: 0</div>
+  <div id="timer">Próxima atualização: 120s</div>
 
-    <div id="level-selector" style="margin-top: 10px; text-align: center;">
-        <h4 style="margin: 8px 0; font-size: 12px; color: white; font-family: 'Press Start 2P', sans-serif;">
-          Escolha o Nível:
-        </h4>
-        <button onclick="setLevel('easy')" class="level-btn">EASY</button>
-        <button onclick="setLevel('medium')" class="level-btn">MEDIUM</button>
-        <button onclick="setLevel('hard')" class="level-btn">HARD</button>
-        <button onclick="setLevel('custom')" class="level-btn">CUSTOMIZED</button>
+  <div id="level-selector" style="margin-top: 10px; text-align: center;">
+    <h4 style="margin: 8px 0; font-size: 12px; color: white; font-family: 'Press Start 2P', sans-serif;">
+      Escolha o Nível:
+    </h4>
+    <button onclick="setLevel('easy')" class="level-btn">EASY</button>
+    <button onclick="setLevel('medium')" class="level-btn">MEDIUM</button>
+    <button onclick="setLevel('hard')" class="level-btn">HARD</button>
+    <button onclick="setLevel('custom')" class="level-btn">CUSTOMIZED</button>
+
+    <div id="custom-options" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px;">
       
-        <div id="custom-options" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px;">
-          <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
-            Velocidade:
-            <input type="number" id="custom-speed" value="2" step="0.5" min="0" max="10" style="width:60px;">
-          </label>
-          <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
-            <input type="checkbox" id="custom-nocollision"> Sem colisão (modo imortal)
-          </label>
-          <div id="custom-score-options" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px;">
-            <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
-              Pontos iniciais:
-              <input type="number" id="custom-start-score" value="0" step="1" min="0" style="width:60px;">
-            </label>
-            <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
-              Multiplicador de pontos:
-              <select id="custom-score-multiplier" style="width:70px;">
-                <option value="1">1x</option>
-                <option value="2">2x</option>
-                <option value="3">3x</option>
-                <option value="4">4x</option>
-              </select>
-            </label>
-          </div>
-          
-          <button onclick="applyCustom()" style="margin-top:5px;">Aplicar</button>
+      <!-- Configuração do pássaro -->
+      <div id="bird-icon" style="margin-top: 10px; text-align:center;">
+        <img id="bird-img" src="flappybird.png" alt="Bird" style="width:40px; height:40px; cursor:pointer; display:block; margin:0 auto;">
+        
+        <!-- Entrada por link -->
+        <div style="margin-top:5px;">
+          <input type="text" id="bird-url" placeholder="Cole o link da imagem .png" style="width:200px;">
+          <button onclick="saveBirdIcon()">Salvar</button>
         </div>
+
+        <!-- Entrada por upload -->
+        <div style="margin-top:5px;">
+          <input type="file" id="bird-file" accept="image/png">
+          <button onclick="uploadBirdIcon()">Upload</button>
+        </div>
+
+        <button onclick="resetBirdIcon()" style="margin-top:5px;">Resetar</button>
       </div>
+
+      <!-- Velocidade -->
+      <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
+        Velocidade:
+        <input type="number" id="custom-speed" value="2" step="0.5" min="0" max="10" style="width:60px;">
+      </label>
+
+      <!-- Sem colisão -->
+      <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
+        <input type="checkbox" id="custom-nocollision"> Sem colisão (modo imortal)
+      </label>
+      <!-- Canos abrindo/fechando -->
+<label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
+  <input type="checkbox" id="custom-moving-pipes"> Canos se movendo (abrindo/fechando)
+</label>
+
+
+      <!-- Pontuação customizada -->
+      <div id="custom-score-options" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px;">
+        <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
+          Pontos iniciais:
+          <input type="number" id="custom-start-score" value="0" step="1" min="0" style="width:60px;">
+        </label>
+        <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
+          Multiplicador de pontos:
+          <select id="custom-score-multiplier" style="width:70px;">
+            <option value="1">1x</option>
+            <option value="2">2x</option>
+            <option value="3">3x</option>
+            <option value="4">4x</option>
+          </select>
+        </label>
+      </div>
+
+      <button onclick="applyCustom()" style="margin-top:5px;">Aplicar</button>
+    </div>
+  </div>
 </div>
 <div id="game-info">
     <p>Jogo criado por Ghosthszz_</p>
