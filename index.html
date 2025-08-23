@@ -32,26 +32,53 @@
 </style>
 </head>
 <body>
-
 <div id="scoreboard">
-        <h3 style="margin: 0 0 10px 0; font-family: 'Press Start 2P', sans-serif; font-size: 14px; color: white;">
-        RANKING:
-    </h3>
     <div class="score-item">🥇 1º: 0</div>
     <div class="score-item">🥈 2º: 0</div>
     <div class="score-item">🥉 3º: 0</div>
     <div id="timer">Próxima atualização: 120s</div>
-      <a href="https://flap-bird-multiplayer.onrender.com/" target="_blank"
-     style="font-size: 1em; margin: 0; text-decoration: none; color: white; padding: 4px 6px; background:#161616; border-radius: 6px;">
-    Teste o multiplayer (beta)
-  </a>
-</div>
 
+    <div id="level-selector" style="margin-top: 10px; text-align: center;">
+        <h4 style="margin: 8px 0; font-size: 12px; color: white; font-family: 'Press Start 2P', sans-serif;">
+          Escolha o Nível:
+        </h4>
+        <button onclick="setLevel('easy')" class="level-btn">EASY</button>
+        <button onclick="setLevel('medium')" class="level-btn">MEDIUM</button>
+        <button onclick="setLevel('hard')" class="level-btn">HARD</button>
+        <button onclick="setLevel('custom')" class="level-btn">CUSTOMIZED</button>
+      
+        <div id="custom-options" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px;">
+          <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
+            Velocidade:
+            <input type="number" id="custom-speed" value="2" step="0.5" min="0" max="10" style="width:60px;">
+          </label>
+          <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
+            <input type="checkbox" id="custom-nocollision"> Sem colisão (modo imortal)
+          </label>
+          <div id="custom-score-options" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px;">
+            <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
+              Pontos iniciais:
+              <input type="number" id="custom-start-score" value="0" step="1" min="0" style="width:60px;">
+            </label>
+            <label style="color: white; font-size: 12px; display:block; margin: 5px 0; font-family: 'Press Start 2P', sans-serif;">
+              Multiplicador de pontos:
+              <select id="custom-score-multiplier" style="width:70px;">
+                <option value="1">1x</option>
+                <option value="2">2x</option>
+                <option value="3">3x</option>
+                <option value="4">4x</option>
+              </select>
+            </label>
+          </div>
+          
+          <button onclick="applyCustom()" style="margin-top:5px;">Aplicar</button>
+        </div>
+      </div>
+</div>
 <div id="game-info">
     <p>Jogo criado por Ghosthszz_</p>
     <button id="start-button" onclick="startGame()">Iniciar Jogo</button>
 </div>
-
 <div id="game-container">
     <canvas id="board"></canvas>
     <div id="contributions">
@@ -60,7 +87,6 @@
         <a href="https://livepix.gg/ghosthszz" target="_blank">Clique Aqui!</a>
     </div>
 </div>
-
 <script src="flappybird.js"></script>
 </body>
 </html>
