@@ -29,6 +29,11 @@
     background: rgba(255, 255, 255, 0.1);
     border-radius: 6px;
 }
+    #velocity-display {
+      display: none;
+      font-size: 24px;
+      font-weight: bold;
+    }
 </style>
 </head>
 <body>
@@ -45,7 +50,11 @@
     <button onclick="setLevel('easy')" class="level-btn">EASY</button>
     <button onclick="setLevel('medium')" class="level-btn">MEDIUM</button>
     <button onclick="setLevel('hard')" class="level-btn">HARD</button>
-    <button onclick="setLevel('custom')" class="level-btn">CUSTOMIZED</button>
+    <button onclick="setLevel('custom')" class="level-btn">CUSTOMIZED</button> <br>
+    <label>
+  <input type="checkbox" id="updateeCheckbox" onchange="toggleUpdatee(this)">
+  PROGREDIR VELOCIDADE?
+</label>
 
     <div id="custom-options" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px;">
       
@@ -115,6 +124,7 @@
         <p>Contribua por aqui:</p>
         <img id="tre" src="Untitled.png" alt="Descrição da Imagem">
         <a href="https://livepix.gg/ghosthszz" target="_blank">Clique Aqui!</a>
+        <h1 id="velocity-display">VEL: 0</h1>
     </div>
 </div>
 <script src="flappybird.js"></script>
