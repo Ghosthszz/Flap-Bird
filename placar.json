@@ -2,18 +2,18 @@
     "ranking": [
         {
             "posicao": 1,
+            "nome": "jenny1f",
+            "pontuacao": 1147
+        },
+        {
+            "posicao": 2,
             "nome": "TIDREXX",
             "pontuacao": 980
         },
         {
-            "posicao": 2,
+            "posicao": 3,
             "nome": "Luskera",
             "pontuacao": 959
-        },
-        {
-            "posicao": 3,
-            "nome": "NO CODE",
-            "pontuacao": 872
         }
     ]
 }
