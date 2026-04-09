@@ -36,7 +36,7 @@
     }
 </style>
 </head>
-<body>
+<body class="dark">
 <div id="scoreboard">
   <div class="score-item">🥇 1º: 0</div>
   <div class="score-item">🥈 2º: 0</div>
@@ -52,10 +52,24 @@
     <button onclick="setLevel('hard')" class="level-btn">HARD</button>
     <button onclick="setLevel('custom')" class="level-btn">CUSTOMIZED</button> <br>
     <label>
+      <br>
   <input type="checkbox" id="updateeCheckbox" onchange="toggleUpdatee(this)">
   PROGREDIR VELOCIDADE?
 </label>
+<br>
+<div id="commands-box">
+  <h3>🎮 COMMANDS</h3>
 
+  <div class="command-item">
+    <span>⏸ Pause</span>
+    <kbd>P</kbd>
+  </div>
+
+  <div class="command-item">
+    <span>🎨 Tema</span>
+    <kbd>T</kbd>
+  </div>
+</div>
     <div id="custom-options" style="display:none; margin-top: 10px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px;">
       
       <!-- Configuração do pássaro -->
