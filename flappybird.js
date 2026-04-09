@@ -265,6 +265,8 @@ function atualizarPipes() {
             pipe.passed = true;
             aumentarVelocidade();
             atualizarVelocidade();
+            const audio = new Audio('coin.mp3');
+            audio.play();
         }
 
         // Detectar colisão
