@@ -1,3 +1,5 @@
+//AAA
+
 // ========================
 // Configurações Iniciais
 // ========================
@@ -5,7 +7,10 @@ let ATXSF = false;
 let addscore;
 let scoreMultiplier = 1;
 let movingPipes = false;
+let paused = false;
+let darkMode = true;
 let topScores = [0, 0, 0];
+
 
 let board, context;
 const boardWidth = 860;
@@ -57,6 +62,16 @@ window.onload = () => {
     setInterval(placePipes, 1500);
     startTimer();
 };
+
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+    darkMode = false;
+    document.body.classList.add("light");
+} else {
+    document.body.classList.add("dark");
+    
+}
 
 // ========================
 // Funções de Inicialização
@@ -134,12 +149,6 @@ function iniciarEventos() {
 // ========================
 function setLevel(selected) {
     level = selected;
-
-    // Sempre reseta para valores padrão
-    addscore = 0;
-    score = 0;
-    scoreMultiplier = 1;
-
     // Níveis normais
     if (level === "easy") {
         VEL = 2; 
@@ -218,7 +227,29 @@ function startGame() {
 
 function update() {
     requestAnimationFrame(update);
-    if (gameOver) { mostrarGameOver(); return; }
+
+    if (gameOver) { 
+        mostrarGameOver(); 
+        return; 
+    }
+
+    if (paused) {
+        // Mostrar texto de pause
+        context.fillStyle = "yellow";
+        context.font = "30px 'Press Start 2P', sans-serif";
+        context.fillText("PAUSED", 250, 300);
+        return;
+    }
+
+    // FUNDO DINÂMICO
+if (darkMode) {
+    context.fillStyle = "#000"; // preto
+} else {
+    context.fillStyle = "#87CEEB"; // azul claro (céu)
+}
+
+context.fillRect(0, 0, board.width, board.height);
+
     context.clearRect(0, 0, board.width, board.height);
     atualizarBird();
     atualizarPipes();
@@ -226,7 +257,7 @@ function update() {
 }
 
 function mostrarGameOver() {
-    context.fillStyle = "white";
+    context.fillStyle = darkMode ? "white" : "black";
     context.font = "30px 'Press Start 2P', sans-serif";
     context.fillText("GAME OVER", 5, 90);
 }
@@ -285,7 +316,7 @@ function mostrarPontuacao() {
 }
 
 function placePipes() {
-    if (gameOver) return;
+    if (gameOver || paused) return;
 
     // Posição vertical aleatória do cano superior
     let randomPipeY = pipeY - pipeHeight / 4 - Math.random() * (pipeHeight / 2);
@@ -320,8 +351,21 @@ function placePipes() {
 }
 
 
-
 function moveBird(e) {
+
+    // TECLA DE PAUSE
+    if (e.code === "KeyP") {
+        togglePause();
+        return;
+    }
+    // TECLA DE TEMA
+if (e.code === "KeyT") {
+    toggleTheme();
+    return;
+}
+
+    if (paused) return;
+
     if (["Space", "ArrowUp", "KeyX"].includes(e.code)) {
         velocityY = -6;
         if (gameOver) resetGame();
@@ -330,6 +374,9 @@ function moveBird(e) {
 
 function touchHandler(e) {
     e.preventDefault();
+
+    if (paused) return;
+
     velocityY = -6;
     if (gameOver) resetGame();
 }
@@ -536,6 +583,7 @@ async function salvarPlacar(novoRanking, sha) {
 // Timer
 // ========================
 function startTimer() {
+    if (paused) return;
     autoInterval = setInterval(() => {
         autoTimer--;
         updateTimer();
@@ -594,6 +642,24 @@ function aumentarVelocidade() {
   function toggleUpdatee(checkbox) {
     updatee = checkbox.checked;
   }
+  function togglePause() {
+    paused = !paused;
+}
+function toggleTheme() {
+    darkMode = !darkMode;
+
+    const body = document.body;
+
+    if (darkMode) {
+        body.classList.remove("light");
+        body.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+    } else {
+        body.classList.remove("dark");
+        body.classList.add("light");
+        localStorage.setItem("theme", "light");
+    }
+}
 // ========================
 // API DO PLACAR_JSON
 // ========================
