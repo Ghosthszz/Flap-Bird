@@ -1,5 +1,5 @@
 {
-    "ranking": [
+  "ranking": [
         {
             "posicao": 1,
             "nome": "jenny1f",
@@ -7,13 +7,13 @@
         },
         {
             "posicao": 2,
-            "nome": null,
-            "pontuacao": 1000
+            "nome": "TIDREXX",
+            "pontuacao": 980
         },
         {
             "posicao": 3,
-            "nome": "TIDREXX",
-            "pontuacao": 980
+            "nome": "Luskera",
+            "pontuacao": 959
         }
     ]
 }
